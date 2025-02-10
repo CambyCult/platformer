@@ -2,6 +2,8 @@ export default class Player {
     constructor(scene, x, y) {
         this.scene = scene;
         this.sprite = scene.physics.add.sprite(x, y, 'player');
+        this.sprite.setScale(2);
+        
         // ✅ Ensure Physics Body Exists
         this.sprite.setCollideWorldBounds(false);
         // Set Physics Properties

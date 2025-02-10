@@ -2,6 +2,8 @@ export default class Enemy {
     constructor(scene, x, y) {
         this.scene = scene;
         this.sprite = scene.physics.add.sprite(x, y, 'enemy'); // Add enemy sprite
+        this.sprite.setScale(1.5);
+        this.sprite.body.setSize(48,48);
         this.sprite.setCollideWorldBounds(true);
         this.sprite.setGravityY(1875); // Match player gravity
         this.sprite.setVelocityX(100); // Move right by default

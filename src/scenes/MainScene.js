@@ -8,9 +8,10 @@ export default class MainScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('player', 'src/assets/player.jpg');
-        this.load.image('ground', 'src/assets/road-background.jpg');
+        this.load.image('player', 'src/assets/abigail-sprite.png');
+        this.load.image('groundTile', 'src/assets/ground-tile.png');
         this.load.image('background', 'src/assets/sky-background.jpg');
+        this.load.image('enemy', 'src/assets/oliver-sprite.png')
     }
 
     create() {
@@ -26,12 +27,8 @@ export default class MainScene extends Phaser.Scene {
         // ✅ Spawn Enemy
         this.enemy = new Enemy(this, 300, this.environment.groundHeight - 50); // Place on ground
 
-        // ✅ Ensure the player collides with the ground (only once!)
-        if (this.environment.ground && this.environment.ground.getChildren().length > 0) {
-            this.physics.add.collider(this.player.sprite, this.environment.ground);
-        } else {
-            console.error("Ground is not initialized correctly!");
-        }
+        this.physics.add.collider(this.player.sprite, this.environment.ground);
+
     
         // ✅ Ensure collision with obstacles
         if (this.environment.obstacle) {
